@@ -31,14 +31,14 @@ function App() {
         
         {/* Protected routes */}
         <Route path="/" element={<AppLayout />}>
-          <Route index element={<Navigate to="/dashboard" replace />} />
+          <Route index element={<Navigate to="/dashboard\" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="expenses" element={<ExpensesPage />} />
           <Route path="categories" element={<CategoriesPage />} />
           <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="reports" element={<ReportsPage />} />
           <Route path="settings" element={<SettingsPage />} />
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/dashboard\" replace />} />
         </Route>
       </Routes>
     </Router>
