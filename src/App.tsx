@@ -6,6 +6,8 @@ import DashboardPage from './pages/DashboardPage';
 import ExpensesPage from './pages/ExpensesPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import ReportsPage from './pages/ReportsPage';
+import CategoriesPage from './pages/CategoriesPage';
+import SettingsPage from './pages/SettingsPage';
 import AppLayout from './components/layout/AppLayout';
 
 function App() {
@@ -18,12 +20,14 @@ function App() {
         
         {/* Protected routes */}
         <Route path="/" element={<AppLayout />}>
-          <Route index element={<Navigate to="/dashboard\" replace />} />
+          <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="expenses" element={<ExpensesPage />} />
+          <Route path="categories" element={<CategoriesPage />} />
           <Route path="analytics" element={<AnalyticsPage />} />
           <Route path="reports" element={<ReportsPage />} />
-          <Route path="*" element={<Navigate to="/dashboard\" replace />} />
+          <Route path="settings" element={<SettingsPage />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Route>
       </Routes>
     </Router>

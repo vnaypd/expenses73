@@ -59,16 +59,16 @@ const Sidebar: React.FC<SidebarProps> = ({ mobile, closeSidebar }) => {
               key={item.name}
               to={item.href}
               className={({ isActive }) =>
-                `group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-colors ${
+                `group flex items-center px-2 py-2 text-sm font-medium rounded-md transition-all duration-200 ${
                   isActive
-                    ? 'bg-primary-50 text-primary-600'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? 'bg-primary-50 text-primary-600 transform scale-105'
+                    : 'text-gray-600 hover:bg-gray-100 hover:text-primary-600'
                 }`
               }
               onClick={mobile ? closeSidebar : undefined}
             >
               <item.icon
-                className={`mr-3 flex-shrink-0 h-6 w-6 transition-colors`}
+                className={`mr-3 flex-shrink-0 h-6 w-6 transition-colors duration-200`}
                 aria-hidden="true"
               />
               {item.name}
