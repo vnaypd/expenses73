@@ -1,10 +1,14 @@
-export const formatCurrency = (amount: number, locale = 'en-IN', currency = 'INR'): string => {
-  return new Intl.NumberFormat(locale, {
+export const formatCurrency = (amount: number): string => {
+  const { currency } = useThemeStore.getState();
+  
+  const formatter = new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency,
+    currency: currency || 'INR',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-  }).format(amount);
+  });
+  
+  return formatter.format(amount);
 };
 
 export const formatDate = (date: Date | string): string => {

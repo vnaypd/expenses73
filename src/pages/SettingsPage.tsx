@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useAuthStore } from '../store/authStore';
+import { useThemeStore } from '../store/themeStore';
 import { User, Settings, Bell, Lock, LogOut } from 'lucide-react';
 
 const SettingsPage: React.FC = () => {
   const { user, signOut } = useAuthStore();
-  const [currency, setCurrency] = useState('INR');
-  const [notifications, setNotifications] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
+  const { darkMode, currency, toggleDarkMode, setCurrency } = useThemeStore();
 
   const handleSignOut = async () => {
     if (window.confirm('Are you sure you want to sign out?')) {
@@ -76,7 +75,7 @@ const SettingsPage: React.FC = () => {
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium text-gray-700">Dark Mode</span>
                 <button
-                  onClick={() => setDarkMode(!darkMode)}
+                  onClick={toggleDarkMode}
                   className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
                     darkMode ? 'bg-primary-600' : 'bg-gray-200'
                   }`}
@@ -84,33 +83,6 @@ const SettingsPage: React.FC = () => {
                   <span
                     className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
                       darkMode ? 'translate-x-6' : 'translate-x-1'
-                    }`}
-                  />
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="flex items-center space-x-3 mb-6">
-              <Bell className="h-6 w-6 text-primary-600" />
-              <h2 className="text-lg font-medium">Notifications</h2>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-700">
-                  Enable Notifications
-                </span>
-                <button
-                  onClick={() => setNotifications(!notifications)}
-                  className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                    notifications ? 'bg-primary-600' : 'bg-gray-200'
-                  }`}
-                >
-                  <span
-                    className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                      notifications ? 'translate-x-6' : 'translate-x-1'
                     }`}
                   />
                 </button>
@@ -139,5 +111,3 @@ const SettingsPage: React.FC = () => {
     </div>
   );
 };
-
-export default SettingsPage;
