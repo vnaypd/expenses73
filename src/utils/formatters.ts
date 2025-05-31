@@ -1,13 +1,15 @@
+import { useThemeStore } from "../store/themeStore";
+
 export const formatCurrency = (amount: number): string => {
   const { currency } = useThemeStore.getState();
-  
+
   const formatter = new Intl.NumberFormat('en-IN', {
     style: 'currency',
     currency: currency || 'INR',
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
-  
+
   return formatter.format(amount);
 };
 
@@ -15,7 +17,7 @@ export const formatDate = (date: Date | string): string => {
   if (typeof date === 'string') {
     date = new Date(date);
   }
-  
+
   return new Intl.DateTimeFormat('en-IN', {
     year: 'numeric',
     month: 'short',
@@ -27,7 +29,7 @@ export const formatMonthYear = (date: Date | string): string => {
   if (typeof date === 'string') {
     date = new Date(date);
   }
-  
+
   return new Intl.DateTimeFormat('en-IN', {
     year: 'numeric',
     month: 'long',
@@ -52,6 +54,6 @@ export const getRandomColor = (): string => {
     '#F97316', // orange
     '#6366F1', // indigo
   ];
-  
+
   return colors[Math.floor(Math.random() * colors.length)];
 };
